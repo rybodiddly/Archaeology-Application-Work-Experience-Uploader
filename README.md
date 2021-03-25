@@ -1,6 +1,14 @@
 # Archaeology-Application-Work-Experience-Uploader
 Python script to upload work experience for the Ontario Archaeology License Application
 
+__Requirements:__
+```
+bs4 (BeautifulSoup)
+pandas
+requests
+urllib3
+```
+
 __Usage:__
 ```
 uploader.py <user_name> <password> <application_id> <csv_file>
