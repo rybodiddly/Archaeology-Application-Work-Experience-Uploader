@@ -65,4 +65,4 @@ No Sites
 Other
 ```
 __Notes:__
-- current this script is intented for new R license applications. It has not been tested with any other license or license renewal type.
+- currently this script is intented for new R license applications. It has not been tested with any other license or license renewal type.
