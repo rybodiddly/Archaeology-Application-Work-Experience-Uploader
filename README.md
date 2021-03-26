@@ -11,10 +11,15 @@ urllib3
 
 __Usage:__
 ```
-uploader.py <user_name> <password> <application_id> <csv_file>
+uploader.py <user_name> <password> <application_id> <csv_file> -<experience_type>
 
 Example:
-python uploader.py myusername mypassword 1234 WorkExperience.csv
+python uploader.py myusername mypassword 1234 WorkExperience.csv -we
+
+Experience Types:
+-we = general work experience
+-s  = supervisor experience
+-a  = artifact amangement experience
 ```
 
 __How To:__
@@ -22,6 +27,16 @@ __How To:__
 Create a new R License application online. To Get application number / ID, log in to your account, click `Applications` from the left hand menu so it drops down, then from the drop down select `Search for an Application`. Then select `New License` from the `Licence Application Type` drop down. The following page will display your application id number. You can enter just the 4 digits or include the `APPL-` prefix.
 
 Use the included csv file. Make sure there are no spaces after pif / borden #'s. Also make sure all stages, cultural periods and terrain types correctly match ministry requirements. Once the work experience csv is complete, use the commands detailed above to upload your work experience.
+
+__Experience Types:__
+
+A new Applied Research (R) License application contains 3 areas of required experience:
+```
+1. General Work Experience (150 day requirement)
+2. Supervisory Experience
+3. Artifact Management Experience
+```
+Because much of this data overlaps, you are able to input all the data into the supplied templace csv. You can then upload your data to each section using one of the 3 experience type commands.
 
 __Stage Options:__
 ```
