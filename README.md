@@ -76,13 +76,13 @@ Team Lead
 
 __Artifact Management Experience Options:__
 ```
-Identification and cataloguing of artifacts
-Statistical and interpretive analysis of artifacts
-Specialist analysis such as faunal or botanical
-Stratigraphic, feature or distribution analysis and interpretation
-Responsibility for field lab, artifact processing and packing
-Collections conservation, rehabilitation, rehousing
-Collections and/or lab policy and procedural development
+- Identification and cataloguing of artifacts
+- Statistical and interpretive analysis of artifacts
+- Specialist analysis such as faunal or botanical
+- Stratigraphic, feature or distribution analysis and interpretation
+- Responsibility for field lab, artifact processing and packing
+- Collections conservation, rehabilitation, rehousing
+- Collections and/or lab policy and procedural development
 ```
 
 __Notes:__
