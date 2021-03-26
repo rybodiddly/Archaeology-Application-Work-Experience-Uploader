@@ -9,7 +9,7 @@ import urllib3
 from ministryapi import *
 
 # main program
-def main(username, password, appID, file):
+def main(session, username, password, appID, file, arg):
 	get_sessionID(session)
 	login(session, username, password)
 	page_token, javax_faces_ViewState = get_application(session)
@@ -32,8 +32,12 @@ def main(username, password, appID, file):
 		'end_date': '',
 		'cultural_period': '',
 		'terrain': '',
-		'participation': ''
+		'participation': '',
+		'supervisor_experience': '',
+		'supervisor_participation': '',
+		'artifact_experience': ''
 	}
+	
 	counter = 0
 	# Begin Loop:
 	# Get CSV Rows:
@@ -50,22 +54,44 @@ def main(username, password, appID, file):
 		dict['cultural_period'] = row['Cultural Period']
 		dict['terrain'] = row['Terrain']
 		dict['participation'] = row['Days of Participation']
+		dict['supervisor_experience'] = row['Supervisor Experience']
+		dict['supervisor_participation'] = row['Days of Supervisor Participation']
+		dict['artifact_experience'] = row['Artifact Experience']
 		
-		# GET Work Experience Situation
-		javax_faces_ViewState = experience_situation(session)
-		#time.sleep(1)
-		# Upload Exerience Data
-		upload(session, dict, javax_faces_ViewState, counter)
+		# Work Experience:
+		if arg.lower() == '-we':
+			# GET Work Experience Situation
+			javax_faces_ViewState = experience_situation(session)
+			# Upload Exerience Data
+			upload_experience(session, dict, javax_faces_ViewState, counter)
+		
+		elif arg.lower() == '-s':
+			# if not float (meaning it contains data and is not NaN) then continue, otherwise is blank so skip
+			if isinstance(row['Supervisor Experience'], float) == False:
+				# Get Supervisory Experience
+				javax_faces_ViewState = supervisor(session)
+				# Upload Supervisory Exerience Data
+				upload_supervisor(session, dict, javax_faces_ViewState, counter)
+
+		# Artifact Experience:
+		elif arg.lower() == '-a':
+			# if not float (meaning it contains data and is not NaN) then continue, otherwise is blank so skip
+			if isinstance(row['Artifact Experience'], float) == False:
+				# Get Artifact Management
+				javax_faces_ViewState = artifact(session)
+				# Upload Artifact Management Experience
+				upload_artifact(session, dict, javax_faces_ViewState, counter)
+
 		counter += 1
-		#time.sleep(1)
 
 username = sys.argv[1]
 password = sys.argv[2]
 appID = sys.argv[3]
 file = sys.argv[4]
+arg = sys.argv[5]
 
 urllib3.disable_warnings()
 session = requests.Session()
 
-main(username, password, appID, file)
+main(session, username, password, appID, file, arg)
 print('Upload Complete')

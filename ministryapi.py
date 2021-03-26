@@ -192,8 +192,8 @@ def experience_situation(session):
 		print('Error: Unable to Access Work Experience Situation')
 
 # POST URL: https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEWorkSituation.xhtml
-# POST Upload Experience
-def upload(session, dict, javax_faces_ViewState, counter):
+# POST Upload Work Experience
+def upload_experience(session, dict, javax_faces_ViewState, counter):
 	url ='https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEWorkSituation.xhtml'
 	headers = {
 		'Host': 'www.pastport.mtc.gov.on.ca',
@@ -238,6 +238,141 @@ def upload(session, dict, javax_faces_ViewState, counter):
 			f.close
 	except:
 		print('Error: Unable to Upload Work Experience')
+
+# GET URL: https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEFieldWork.xhtml
+# GET Supervisory Experience
+def supervisor(session):
+	url= 'https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEFieldWork.xhtml'
+	headers = {
+		'Host': 'www.pastport.mtc.gov.on.ca',
+		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0',
+		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+		'Accept-Language': 'en-CA,en-US;q=0.7,en;q=0.3',
+		'Accept-Encoding': 'gzip, deflate, br',
+		'Connection': 'keep-alive',
+		'Referer': 'https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWorkExperience.xhtml',
+		'Upgrade-Insecure-Requests': '1'
+	}
+	try:
+		get_artifact = session.get(url, headers=headers, verify=False)
+		print('GET Supervisory Experience')
+		soup = BeautifulSoup(get_artifact.text, 'html.parser')
+		javax_faces_ViewState = soup.find('input', {'name':'javax.faces.ViewState'})['value']
+		return javax_faces_ViewState
+	except:
+		print('Error: Unable to Access Supervisory Experience')
+
+# POST URL: https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEFieldWork.xhtml
+# POST Upload Supervisory Experience
+def upload_supervisor(session, dict, javax_faces_ViewState, counter):
+	url ='https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEFieldWork.xhtml'
+	headers = {
+		'Host': 'www.pastport.mtc.gov.on.ca',
+		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0',
+		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+		'Accept-Language': 'en-CA,en-US;q=0.7,en;q=0.3',
+		'Accept-Encoding': 'gzip, deflate, br',
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Origin': 'https://www.pastport.mtc.gov.on.ca',
+		'Connection': 'keep-alive',
+		'Referer': 'https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEFieldWork.xhtml',
+		'Upgrade-Insecure-Requests': '1'
+	}
+	payload = {
+		'applicationWEFieldWorkForm:pifNum': dict['pif'],
+		'applicationWEFieldWorkForm:projectName': dict['project'],
+		'applicationWEFieldWorkForm:bordenNumber': borden(dict['borden']),
+		'applicationWEFieldWorkForm:projectStageTypeCode': stage(dict['stage']),
+		'applicationWEFieldWorkForm:projectLocation': dict['location'],
+		'applicationWEFieldWorkForm:provinceCode': dict['province'],
+		'applicationWEFieldWorkForm:specify': dict['supervisor_participation'],
+		'applicationWEFieldWorkForm:projLiencedSupName': dict['licensee'],
+		'applicationWEFieldWorkForm:projectStartDateInputDate': rearrange_date(dict['start_date']),
+		'applicationWEFieldWorkForm:projectStartDateInputCurrentDate': current_sdate(dict['start_date']),
+		'applicationWEFieldWorkForm:projectEndDateInputDate': rearrange_date(dict['end_date']),
+		'applicationWEFieldWorkForm:projectEndDateInputCurrentDate': datetime.today().strftime("%m/%Y"),
+		'applicationWEFieldWorkForm:numOfSupDays': '',
+		'applicationWEFieldWorkForm:fieldworkRoleId': supervisor_role(dict['supervisor_experience']),
+		'applicationWEFieldWorkForm:numOfPrtcptDays': dict['participation'],
+		'autoScroll': '0,1018',
+		'applicationWEFieldWorkForm_SUBMIT': '1',
+		'javax.faces.ViewState': javax_faces_ViewState,
+		'applicationWEFieldWorkForm:_idcl': 'applicationWEFieldWorkForm:saveSOFW',
+	}
+	try:
+		#session.post(url, headers=headers, data=payload, verify=False)
+		r = session.post(url, headers=headers, data=payload, verify=False)
+		print('POST Upload Supervisory Experience')
+		# Write html of POST Results to dump folder for debugging
+		with open('dumps/' + str(counter) + '_dump.html', 'w') as f:
+			f.write(r.text)
+			f.close
+	except:
+		print('Error: Unable to Upload Supervisory Experience')
+
+# GET URL: https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEArtifact.xhtml
+# GET Artifact Management Experience
+def artifact(session):
+	url= 'https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEArtifact.xhtml'
+	headers = {
+		'Host': 'www.pastport.mtc.gov.on.ca',
+		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0',
+		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+		'Accept-Language': 'en-CA,en-US;q=0.7,en;q=0.3',
+		'Accept-Encoding': 'gzip, deflate, br',
+		'Connection': 'keep-alive',
+		'Referer': 'https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWorkExperience.xhtml',
+		'Upgrade-Insecure-Requests': '1'
+	}
+	try:
+		get_artifact = session.get(url, headers=headers, verify=False)
+		print('GET Artifact Management Experience')
+		soup = BeautifulSoup(get_artifact.text, 'html.parser')
+		javax_faces_ViewState = soup.find('input', {'name':'javax.faces.ViewState'})['value']
+		return javax_faces_ViewState
+	except:
+		print('Error: Unable to Access Artifact Management Experience')
+
+# POST URL: https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEArtifact.xhtml
+# POST Upload Artifact Managment Experience
+def upload_artifact(session, dict, javax_faces_ViewState, counter):
+	url ='https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEArtifact.xhtml'
+	headers = {
+		'Host': 'www.pastport.mtc.gov.on.ca',
+		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0',
+		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+		'Accept-Language': 'en-CA,en-US;q=0.7,en;q=0.3',
+		'Accept-Encoding': 'gzip, deflate, br',
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Origin': 'https://www.pastport.mtc.gov.on.ca',
+		'Connection': 'keep-alive',
+		'Referer': 'https://www.pastport.mtc.gov.on.ca/APSWeb/application/applicationWEArtifact.xhtml',
+		'Upgrade-Insecure-Requests': '1'
+	}
+	payload = {
+		'applicationWEArtifactForm:pifNum': dict['pif'],
+		'applicationWEArtifactForm:projectName': dict['project'],
+		'applicationWEArtifactForm:directorName': dict['licensee'],
+		'applicationWEArtifactForm:description': dict['artifact_experience'],
+		'applicationWEArtifactForm:projectStartDateInputDate': rearrange_date(dict['start_date']),
+		'applicationWEArtifactForm:projectStartDateInputCurrentDate': current_sdate(dict['start_date']),
+		'applicationWEArtifactForm:projectEndDateInputDate': rearrange_date(dict['end_date']),
+		'applicationWEArtifactForm:projectEndDateInputCurrentDate': datetime.today().strftime("%m/%Y"),
+		'autoScroll': '0,723.5',
+		'applicationWEArtifactForm_SUBMIT': '1',
+		'javax.faces.ViewState': javax_faces_ViewState,
+		'applicationWEArtifactForm:_idcl': 'applicationWEArtifactForm:saveAOFW'
+	}
+	try:
+		#session.post(url, headers=headers, data=payload, verify=False)
+		r = session.post(url, headers=headers, data=payload, verify=False)
+		print('POST Upload Artifact Management Experience')
+		# Write html of POST Results to dump folder for debugging
+		with open('dumps/' + str(counter) + '_dump.html', 'w') as f:
+			f.write(r.text)
+			f.close
+	except:
+		print('Error: Unable to Upload Artifact Management Experience')
 
 # re-arrange dates from MM/DD/YYY to DD/MM/YYYY
 # prefix 0 if day or month not 2 digits
@@ -321,6 +456,21 @@ def terrain(data):
 	}
 
 	for key, value in terrains.items():
+		if isinstance(data, float) == False:
+			if str(data).lower() == key.lower():
+				return value
+		else:
+			return ''
+
+def supervisor_role(data):
+	roles = {
+		'Supervisor': '277',
+		'Co-Supervisor': '278',
+		'Assistant Supervisor': '279',
+		'Crew Chief': '280',
+		'Team Lead': '281'
+	}
+	for key, value in roles.items():
 		if isinstance(data, float) == False:
 			if str(data).lower() == key.lower():
 				return value
