@@ -103,7 +103,8 @@ def select_app_v1(session, appID, page_token, javax_faces_ViewState):
 			try:
 				if re.search(':select', item['onclick']):
 					idcl = item['id']
-			except:pass
+			except:
+				pass
 
 		return javax_faces_ViewState, idcl
 
