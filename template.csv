@@ -1,2 +1,4 @@
-Pif,Project,Borden,Stage,Location,Province,Licensee,Start Date MM/DD/YYYY,End Date MM/DD/YYYY,Cultural Period,Terrain,Days of Participation
-P123-4567-2021,Example Site,AbCd-12,3,Some Place,ON,My Boss,4/1/2021,8/1/2021,Euro-Canadian,Urban,5
+Pif,Project,Borden,Stage,Location,Province,Licensee,Start Date MM/DD/YYYY,End Date MM/DD/YYYY,Cultural Period,Terrain,Days of Participation,Supervisor Experience,Artifact Experience
+P123-4567-2021,Example Site,AbCd-12,3,Some Place,ON,My Boss,4/1/2021,8/1/2021,Pre-Contact,Agricultural,3,Team Lead,"- Responsibility for field lab, artifact processing and packing
+- Statistical and interpretive analysis of artifacts"
+P222-4567-2021,Example Site #2,AbCd-452,4,Another Place,ON,My Boss,6/14/2021,11/2/2021,Euro-Canadian,Urban,10,,
