@@ -107,3 +107,4 @@ your activites / methodologies to strengthen your application.
 
 __Notes:__
 - currently this script is intented for new R license applications. It has not been tested with any other license or license renewal types.
+- Support for additional license types will be added in the future.
