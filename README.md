@@ -36,7 +36,7 @@ A new Applied Research (R) License application contains 3 areas of required expe
 2. Supervisory Experience
 3. Artifact Management Experience
 ```
-Because much of this data overlaps, you are able to input all the data into the supplied templace csv. You can then upload your data to each section using one of the 3 experience type commands.
+Because much of this data overlaps, you are able to input all the data into the supplied csv template. You can then upload your data to each section using one of the 3 experience type commands.
 
 __Stage Options:__
 ```
