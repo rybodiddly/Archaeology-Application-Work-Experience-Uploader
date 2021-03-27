@@ -46,7 +46,7 @@ __Stage Options:__
 3
 4
 
-NOTE: Stage 4 will default to 4 EX on application. If you wish to switch to A&P, you will must currently manually edit online.
+NOTE: Stage 4 will default to 4 EX on application. If you wish to switch to A&P, you must manually edit online.
 ```
 
 __Cultural Period Options:__
