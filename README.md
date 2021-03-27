@@ -100,7 +100,7 @@ __Artifact Management Experience Options:__
 - Collections and/or lab policy and procedural development
 
 Note: The above Artifiact Management Experience options were taken from the online application Instructions. 
-The downloadable pdf detailing the application instructions suggested a more robus / nuanced level of detail
+The downloadable pdf detailing the application instructions suggested a more robust / nuanced level of detail
 regarding your activities. Use the above list as a baseline, but it is suggested to add more details about
 your activites / methodologies.
 ```
