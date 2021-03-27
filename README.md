@@ -19,7 +19,7 @@ python uploader.py myusername mypassword 1234 WorkExperience.csv -we
 Experience Types:
 -we = general work experience
 -s  = supervisor experience
--a  = artifact amangement experience
+-a  = artifact mangement experience
 ```
 
 __How To:__
