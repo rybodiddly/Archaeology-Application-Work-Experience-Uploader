@@ -24,7 +24,7 @@ Experience Types:
 
 __How To:__
 
-Create a new R License application online. To Get application number / ID, log in to your account, click `Applications` from the left hand menu so it drops down, then from the drop down select `Search for an Application`. Then select `New License` from the `Licence Application Type` drop down. The following page will display your application id number. You can enter just the 4 digits or include the `APPL-` prefix.
+Create a new R License application online. To get your application number / ID, log in to your account, click `Applications` from the left hand menu so it drops down, then from the drop down select `Search for an Application`. Then select `New License` from the `Licence Application Type` drop down. The following page will display your application id number. You can enter just the 4 digits or include the `APPL-` prefix.
 
 Use the included csv file. Make sure there are no spaces after pif / borden #'s. Also make sure all stages, cultural periods and terrain types correctly match ministry requirements. Once the work experience csv is complete, use the commands detailed above to upload your work experience.
 
