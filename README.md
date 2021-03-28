@@ -56,7 +56,7 @@ __Stage Options:__
 
 NOTE: Stage 4 will default to 4 EX (excavation) on application. If you wish 
 to switch to A&P (avoidance and protection), you must manually edit online. 
-Support for additional stage 4 options will be added int he future, but A&P 
+Support for additional stage 4 options will be added int the future, but A&P 
 mitigation will unlikely be utilized in R license applications.
 ```
 
