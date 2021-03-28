@@ -112,7 +112,7 @@ __Artifact Management Experience Options:__
 
 Note: The above Artifiact Management Experience options were taken from the online application Instructions. 
 The downloadable pdf detailing the application instructions suggested a more robust / nuanced level of detail
-regarding your activities. Use the above list as a baseline, but it is in your best interest to use extrapolate
+regarding your activities. Use the above list as a baseline, but it is in your best interest to extrapolate
 on your activites / methodologies to strengthen your application.
 ```
 
