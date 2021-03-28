@@ -38,6 +38,15 @@ A new Applied Research (R) License application contains 3 areas of required expe
 ```
 Because much of this data overlaps, you are able to input all the data into the supplied csv template. You can then upload your data to each section using one of the 3 experience type commands.
 
+__Progam Flow:__
+
+`-we` uploads all rows of experience in the csv into the Practical Work Experience section while omiting
+Supervisor and Artifact Management Columns.
+
+`-s ` only uploads rows containing of Supervisor experience to the Supervisor Experience section
+
+`-a ` only uploads rows containing of Artifact Management Experience to the Artifact Management Experience section
+
 __Stage Options:__
 ```
 1
