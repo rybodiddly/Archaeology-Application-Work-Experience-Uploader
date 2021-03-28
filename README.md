@@ -41,7 +41,7 @@ Because much of this data overlaps, you are able to input all the data into the 
 __Progam Flow:__
 
 `-we` uploads all rows of experience in the csv into the Practical Work Experience section while omiting
-Supervisor and Artifact Management Columns.
+Supervisor and Artifact Management Columns. Rows containing Supervisor and Artifact Management will still be uploaded as Practical Experience.
 
 `-s ` only uploads rows containing of Supervisor Experience to the Supervisor Experience section
 
