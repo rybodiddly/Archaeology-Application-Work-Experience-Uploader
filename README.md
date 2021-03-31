@@ -47,7 +47,7 @@ __Progam Flow:__
 `-a ` only uploads rows containing of Artifact Management Experience to the Artifact Management Experience section
 
 
-# CSV Option:
+# CSV Options:
 
 __Stage Options:__
 ```
